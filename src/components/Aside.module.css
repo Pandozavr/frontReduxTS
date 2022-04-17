@@ -1,0 +1,23 @@
+.aside{
+    grid-area: aside;
+    background-color: #6191cb;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Calibri;
+    padding: 10px 15px;
+}
+
+.aside a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.aside div{
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.aside div:hover{
+    background-color: #6cc9e3;
+}

@@ -1,0 +1,21 @@
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
+  min-width: 70px;
+}
+.primary {
+  background-color: #3969e3;
+}
+.primary:hover {
+  background-color: #6cc9e3;
+}
+.red {
+  background-color: #ff4d44;
+}
+.red:hover {
+  background-color: #ff9c8b;
+}
