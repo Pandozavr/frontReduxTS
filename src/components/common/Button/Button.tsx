@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './Button.css';
 
 export enum btnVariant {
-  primary = 'primary',
+  blue = 'blue',
   red = 'red',
 }
 

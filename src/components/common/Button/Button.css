@@ -7,10 +7,10 @@
   cursor: pointer;
   min-width: 70px;
 }
-.primary {
+.blue {
   background-color: #3969e3;
 }
-.primary:hover {
+.blue:hover {
   background-color: #6cc9e3;
 }
 .red {
