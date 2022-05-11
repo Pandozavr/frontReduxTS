@@ -9,7 +9,7 @@ export enum btnVariant {
 interface btnProps {
   type: btnVariant;
   name: string;
-  click: () => void;
+  click?: () => void;
 }
 
 export const Button: FC<btnProps> = ({ type, name, click }) => {

@@ -1,27 +1,49 @@
-export enum ProfileActionTypes {
-  SET_POSTS = "SET_POSTS",
-  SET_PROFILE = "SET_PROFILE",
-  SET_ERROR = "SET_ERROR",
+export interface posts {
+  post_id: number
+  post_text: string
 }
 
 export interface ProfileState {
-  userName: string,
-  avatarUrl: string,
-  posts: any[],
-  error: null | string    
+  userName: string
+  avatarUrl: string
+  posts: Array<posts>
+  isLoading: boolean
+  error: string | null
 }
 
-export interface ProfileDataAction {
-  type: ProfileActionTypes.SET_PROFILE,
-  payload: string
+export enum ProfileActionsEnum {
+  SET_POSTS = "SET_POSTS",
+  SET_PROFILE = "SET_PROFILE",
+  SET_ERROR = "SET_ERROR",
+  SET_IS_LOADING = "SET_IS_LOADING"
 }
-export interface PostsActionAction {
-  type: ProfileActionTypes.SET_POSTS,
-  payload: boolean
+
+export interface SetPostsType {
+  type: ProfileActionsEnum.SET_POSTS
+  payload: Array<posts>
 }
-export interface ProfileErrorAction {
-  type: ProfileActionTypes.SET_ERROR,
+
+export interface profilePayload{
+  userName: string
+  email: string
+  avaUrl: string
+}
+
+export interface SetProfileType {
+  type: ProfileActionsEnum.SET_PROFILE
+  payload: profilePayload
+}
+
+export interface SetErrorType {
+  type: ProfileActionsEnum.SET_ERROR
   payload: string | null
 }
 
-export type MainProfileAction = ProfileDataAction | PostsActionAction | ProfileErrorAction
+export interface SetIsLoading {
+  type: ProfileActionsEnum.SET_IS_LOADING
+  payload: boolean
+}
+
+
+
+export type ProfileAction = SetPostsType | SetProfileType | SetErrorType | SetIsLoading

@@ -1,10 +1,10 @@
-import * as axios from "axios"
+import axios from "axios"
 import {Navigate} from "react-router-dom";
+import { authLogin, uplAvatar, Profile, getPosts, getUsers, getMusic } from './apiTypes';
 
 export const API_URL = `http://localhost:3001/api`;
 export const FILE_URL = `http://localhost:3001/`;
 
-// @ts-ignore
 const instance = axios.create({
     baseURL: API_URL,
     withCredentials: true, //автоматическая подцепка куки к запросу
@@ -31,7 +31,6 @@ instance.interceptors.response.use((config:any) => {
     if(error.response.status === 401 && !originalRequest._isRetry) {
         originalRequest._isRetry = true;
         try {
-            // @ts-ignore
             const response = await axios.get(`${API_URL}/refresh`, {withCredentials:true});
             localStorage.setItem('token', response.data.accessToken);
             return instance.request(originalRequest)
@@ -44,10 +43,10 @@ instance.interceptors.response.use((config:any) => {
 
 export const authAPI = {
     register(email:string, password:string, user_name:string) {
-        return instance.post(`register`, {email, password, user_name});
+        return instance.post<authLogin>(`register`, {email, password, user_name});
     },
     login(email:string, password:string) {
-        return instance.post(`login`, {email, password});
+        return instance.post<authLogin>(`login`, {email, password});
     },
     logout() {
         return instance.post(`logout`);
@@ -58,7 +57,7 @@ export const profileAPI = {
     uploadAvatar(profileImg:string) {
         const formData = new FormData();
         formData.append("profileImg", profileImg);
-        return instance.post(`avatar`, formData, {
+        return instance.post<uplAvatar>(`avatar`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -69,10 +68,10 @@ export const profileAPI = {
         return data;
     },
     getProfileData() {
-        return instance.get(`profile`);
+        return instance.get<Profile>(`profile`);
     },
     async getPosts() {
-        const {data} = await instance.get(`userposts`);
+        const {data} = await instance.get<getPosts>(`userposts`);
         return data;
     },
     async deletePost(postID:number) {
@@ -86,8 +85,9 @@ export const profileAPI = {
 };
 
 export const userAPI = {
-    getUsers() {
-        return instance.get(`users`);
+    async getUsers() {
+        const {data} = await instance.get<getUsers>(`users`);
+        return data;
     },
     follow(friendId:number) {
         return instance.get(`follow?friendId=${friendId}`)
@@ -98,7 +98,19 @@ export const userAPI = {
 };
 
 export const musicAPI = {
-    getMusic() {
-        return instance.get(`music`);
+   getMusic() {
+    return instance.get<getMusic>(`music`)
+       
+    },
+    addTrack(trackName:string, artist:string, track:string) {
+        const formData = new FormData();
+        formData.append("trackName", trackName);
+        formData.append("artist", artist);
+        formData.append("track", track);
+        return instance.post(`music`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 };

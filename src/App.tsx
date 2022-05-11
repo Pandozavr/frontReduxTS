@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
+          
           <Route element={<AuthRequire isAuth={isAuth}/>}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/users" element={<Users />} />

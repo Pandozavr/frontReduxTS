@@ -1,0 +1,9 @@
+.authForm{
+  display: flex;
+  flex-flow: column;
+  width: 50%;
+}
+.wrapperAuthForm{
+  display: flex;
+  justify-content: center;
+}
