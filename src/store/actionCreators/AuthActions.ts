@@ -28,7 +28,8 @@ export const login = (email: string, password: string) => async (dispatch: Dispa
     dispatch(setIsAuthAction(true))
     dispatch(setIsLoadingAction(false))
   } catch (e:any) {
-    console.log(e.message);
+    dispatch(setErrorAction(e.response.data.message))
+    setTimeout(() => dispatch(setErrorAction(null)), 5000)
   }
 }
 
@@ -39,7 +40,8 @@ export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
     dispatch(setIsAuthAction(false))
     dispatch(setIsLoadingAction(false))
   } catch (e:any) {
-    console.log(e.message);
+    dispatch(setErrorAction(e.response.data.message))
+    setTimeout(() => dispatch(setErrorAction(null)), 5000)
   }
 }
 
@@ -50,6 +52,7 @@ export const register = (email: string, password: string, user_name: string) => 
     dispatch(setIsAuthAction(false))
     dispatch(setIsLoadingAction(false))
   } catch (e:any) {
-    console.log(e.message);
+    dispatch(setErrorAction(e.response.data.message))
+    setTimeout(() => dispatch(setErrorAction(null)), 5000)
   }
 }

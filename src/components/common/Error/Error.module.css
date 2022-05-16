@@ -1,0 +1,12 @@
+.wrapper{
+  position: fixed;
+  z-index: 100;
+  width: 400px;
+  min-height: 70px;
+  background-color: rgba(220, 20, 60, 0.599);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+  bottom: 20px;
+}

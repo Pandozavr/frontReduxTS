@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
-export const Content = () => {
+export const Content = () => {  
+
   return (
     <div>
-      <Outlet/>
+       <Outlet/>
     </div>
   )
  

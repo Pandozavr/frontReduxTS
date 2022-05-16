@@ -6,4 +6,8 @@
 .wrapperAuthForm{
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+.wrapperAuthForm button{
+  width: 100%;
 }

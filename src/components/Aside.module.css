@@ -20,6 +20,7 @@
 }
 .aside div:hover{
     background-color: #6cc9e3;
+    padding: 5px;
 }
 .active{
     background-color: #d0eef6;

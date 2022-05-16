@@ -9,9 +9,12 @@ import { Users } from "./components/pages/Users/Users";
 import { MainLayout } from "./routes/MainLayout";
 import { NotFound } from "./components/pages/Error/NotFound";
 import { AuthRequire } from "./routes/AuthRequire";
+import { useTypedSelector } from './hooks/useTypedSelector';
+import { getIsAuthValue } from "./store/selectors/authSelectors";
 
 const App = () => {
-  const isAuth = false;
+  const isAuth = useTypedSelector(getIsAuthValue)
+
   return (
     <>
       <Routes>
@@ -34,3 +37,4 @@ const App = () => {
 };
 
 export default App;
+
