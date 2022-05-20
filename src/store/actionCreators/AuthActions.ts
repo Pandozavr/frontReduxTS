@@ -27,9 +27,13 @@ export const login = (email: string, password: string) => async (dispatch: Dispa
     await authAPI.login(email, password)
     dispatch(setIsAuthAction(true))
     dispatch(setIsLoadingAction(false))
-  } catch (e:any) {
-    dispatch(setErrorAction(e.response.data.message))
-    setTimeout(() => dispatch(setErrorAction(null)), 5000)
+  } catch (e:any) {   
+    if(e.response){
+      dispatch(setErrorAction(e.response.data.message))
+    } else {
+      dispatch(setErrorAction(e.message))
+    }
+    setTimeout(() => dispatch(setErrorAction(null)), 3000)
   }
 }
 
@@ -40,8 +44,12 @@ export const logout = () => async (dispatch: Dispatch<AuthAction>) => {
     dispatch(setIsAuthAction(false))
     dispatch(setIsLoadingAction(false))
   } catch (e:any) {
-    dispatch(setErrorAction(e.response.data.message))
-    setTimeout(() => dispatch(setErrorAction(null)), 5000)
+    if(e.response){
+      dispatch(setErrorAction(e.response.data.message))
+    } else {
+      dispatch(setErrorAction(e.message))
+    }
+    setTimeout(() => dispatch(setErrorAction(null)), 3000)
   }
 }
 
@@ -52,7 +60,11 @@ export const register = (email: string, password: string, user_name: string) => 
     dispatch(setIsAuthAction(false))
     dispatch(setIsLoadingAction(false))
   } catch (e:any) {
-    dispatch(setErrorAction(e.response.data.message))
-    setTimeout(() => dispatch(setErrorAction(null)), 5000)
+    if(e.response){
+      dispatch(setErrorAction(e.response.data.message))
+    } else {
+      dispatch(setErrorAction(e.message))
+    }
+    setTimeout(() => dispatch(setErrorAction(null)), 3000)
   }
 }
