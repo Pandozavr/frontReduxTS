@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import styles from "./Content.module.css"
 
 export const Content = () => {  
 
   return (
-    <div style={{padding:"15px"}}>
+    <div className={styles.content}>
        <Outlet/>
     </div>
   )

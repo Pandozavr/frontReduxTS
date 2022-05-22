@@ -2,7 +2,7 @@ import { useTypedSelector } from "../../../../../hooks/useTypedSelector";
 import { getPosts } from "../../../../../store/selectors/profileSelectors";
 import { PostItemMain } from "./PostItemMain";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "../Transition.css"
+import "../Transition.css";
 
 export const PostsList = () => {
   const postData = useTypedSelector(getPosts);

@@ -3,6 +3,9 @@
   flex-flow: column;
   width: 50%;
 }
+.authForm input{
+  margin: 10px 0px;
+}
 .wrapperAuthForm{
   display: flex;
   justify-content: center;

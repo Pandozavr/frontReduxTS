@@ -1,8 +1,7 @@
-import { useTypedSelector } from '../../../../../hooks/useTypedSelector';
-import { getAvatar } from '../../../../../store/selectors/profileSelectors';
-import { Button, btnVariant } from '../../../../common/Button/Button';
+import { Button, btnVariant, btnSize } from '../../../../common/Button/Button';
 import { useActions } from '../../../../../hooks/useActions';
 import { FC } from 'react';
+import styles from "./PostItemMain.module.css"
 
 interface EditOff{
   id: number
@@ -12,7 +11,7 @@ interface EditOff{
 
 export const PostItemEditOff: FC<EditOff> = ({id, postText, click}) => {
 
-  const avatar = useTypedSelector(getAvatar);
+  
   const { delPostThunk } = useActions();
 
   const delPost = () => {
@@ -20,19 +19,12 @@ export const PostItemEditOff: FC<EditOff> = ({id, postText, click}) => {
   };
 
   return (
-    <>
-      <div>
-        <img
-          style={{ width: "50px", display: "block" }}
-          src={avatar}
-          alt="avatar"
-        />
-      </div>
+    <div className={styles.editOffContent}>
       <div>{postText}</div>
-      <div>
-        <Button name="Edit" type={btnVariant.blue} click={click} />
-        <Button name="Delete" type={btnVariant.red} click={delPost} />
+      <div className={styles.btnWrapper}>
+        <Button name="Edit" type={btnVariant.blue} size={btnSize.small} click={click} />
+        <Button name="Delete" type={btnVariant.red} size={btnSize.small} click={delPost} />
       </div>
-    </>
+    </div>
   );
 };

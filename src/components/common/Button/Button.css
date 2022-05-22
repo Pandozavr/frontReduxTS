@@ -7,6 +7,11 @@
   cursor: pointer;
   min-width: 70px;
 }
+
+.small{
+  padding: 3px;
+}
+
 .blue {
   background-color: #3969e3;
 }
@@ -18,4 +23,10 @@
 }
 .red:hover {
   background-color: #ff9c8b;
+}
+.green {
+  background-color: #1db439;
+}
+.green:hover {
+  background-color: #10e236;
 }
