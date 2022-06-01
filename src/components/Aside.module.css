@@ -17,12 +17,15 @@
 .aside div{
     margin-bottom: 10px;
     padding: 5px;
+    border-radius: 5px;
 }
 .aside div:hover{
     background-color: #6cc9e3;
     padding: 5px;
+    border-radius: 5px;
 }
 .active{
     background-color: #d0eef6;
     padding: 5px;
+    border-radius: 5px;
 }

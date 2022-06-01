@@ -22,13 +22,13 @@ export const setProfileData = (payload: profilePayload): SetProfileType => {
       payload
   }
 };
-export const setError = (payload: string | null): SetErrorType => {
+export const setErrorProfile = (payload: string | null): SetErrorType => {
   return {
       type: ProfileActionsEnum.SET_ERROR,
       payload
   }
 };
-export const setIsLoading = (payload: boolean): SetIsLoading => {
+export const setIsLoadingProfile = (payload: boolean): SetIsLoading => {
   return {
       type: ProfileActionsEnum.SET_IS_LOADING,
       payload
@@ -42,32 +42,33 @@ type ThunkType = ThunkAction<Promise<void>, RootState, unknown, ProfileAction>
 export const getProfileThunk = (): ThunkType => async (dispatch) => {
   try{
       let res = await profileAPI.getProfileData();
-      dispatch(setIsLoading(true));
+      dispatch(setIsLoadingProfile(true));
       dispatch(setProfileData(res.data));
-      dispatch(setIsLoading(false));
+      dispatch(setIsLoadingProfile(false));
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };
 
 export const getPostsThunk = (): ThunkType => async (dispatch) => {
   try{
-      let res = await profileAPI.getPosts();
-      console.log(res.posts);
-      
-      dispatch(setIsLoading(true));
+      let res = await profileAPI.getPosts();      
+      dispatch(setIsLoadingProfile(true));
       dispatch(setPosts(res.posts))
+      dispatch(setIsLoadingProfile(false));
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };
 
 export const addPostThunk = (textPost: string): ThunkType => async (dispatch) => {
   try{
       await profileAPI.sendPost(textPost);
+      dispatch(setIsLoadingProfile(true));
       dispatch(getPostsThunk())
+      dispatch(setIsLoadingProfile(false));
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };
 
@@ -76,7 +77,7 @@ export const delPostThunk = (postID: number): ThunkType => async (dispatch) => {
       await profileAPI.deletePost(postID)
       dispatch(getPostsThunk())
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };
 export const updPostThunk = (postID: number, postText: string): ThunkType => async (dispatch) => {
@@ -84,15 +85,16 @@ export const updPostThunk = (postID: number, postText: string): ThunkType => asy
       await profileAPI.updatePost(postID, postText);
       dispatch(getPostsThunk())
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };
 export const updAvatarThunk = (file: string): ThunkType => async (dispatch) => {
   try{
-      let res = await profileAPI.uploadAvatar(file);
-      console.log(res)
+      await profileAPI.uploadAvatar(file);
+      dispatch(setIsLoadingProfile(true));
       dispatch(getProfileThunk())
+      dispatch(setIsLoadingProfile(false));
   } catch(e: any) {
-      dispatch(setError(e.message))
+      dispatch(setErrorProfile(e.message))
   }
 };

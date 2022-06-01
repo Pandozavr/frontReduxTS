@@ -1,0 +1,16 @@
+.avatar{
+  width: 200px;
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.btnAvatar{
+  background-color: rgb(72, 72, 146);
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btnAvatar:hover{
+  background-color: rgb(94, 94, 204);
+}

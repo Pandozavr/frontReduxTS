@@ -6,6 +6,10 @@ import noAvatar from "../../assets/images/no-avatar.png"
 export const getUserName = (state: RootState) => {
   return state.profile.userName
 };
+export const getIsLoadingValue = (state: RootState) => {
+  return state.profile.isLoading
+};
+
 export const getAvatar = (state: RootState) => {
   if(state.profile.avatarUrl === "none"){
     return noAvatar

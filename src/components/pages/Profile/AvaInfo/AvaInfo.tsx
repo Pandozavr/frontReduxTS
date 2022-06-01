@@ -1,13 +1,21 @@
-import { useTypedSelector } from "../../../../hooks/useTypedSelector"
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { getUserName, getAvatar } from '../../../../store/selectors/profileSelectors';
 import { useActions } from '../../../../hooks/useActions';
-import { useEffect } from 'react';
+import { BaseSyntheticEvent, useEffect } from 'react';
+import styles from "./AvaInfo.module.css";
 
 export const AvaInfo = () => {
 
   const userName = useTypedSelector(getUserName)
   const avatar = useTypedSelector(getAvatar)
   const {getProfileThunk} = useActions()
+  const {updAvatarThunk} = useActions()
+
+  const getFile = (e: BaseSyntheticEvent) => {
+    if(e.target.files.length){
+      updAvatarThunk(e.target.files[0])
+  }
+}
 
   useEffect(()=>{
     getProfileThunk()
@@ -16,13 +24,12 @@ export const AvaInfo = () => {
   return (
     <div>
       <p>Hello {userName}</p>
-      <img style={{ width: "200px", display: "block" }} src={avatar} alt="avatar" />
+      <img className={styles.avatar} src={avatar} alt="avatar" />
       <div>
-        <label>
-          {" "}
-          Сменить аватарку
+        <label className={styles.btnAvatar}>
+          New Avatar
           <input
-            //onChange={getFile}
+            onChange={getFile}
             style={{ display: "none" }}
             name="file"
             type="file"
