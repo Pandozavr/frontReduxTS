@@ -1,9 +1,12 @@
 .header{
-    grid-area: header;
     background-color: #374363;
     display: flex;
     padding: 10px 20px;
     justify-content: end;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
 }
 .header button{
     margin-left: 10px;

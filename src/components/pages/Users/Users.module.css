@@ -1,0 +1,10 @@
+.searchWrapper{
+  display: flex;
+  margin-bottom: 20px;
+}
+.searchWrapper p {
+  padding: 10px;
+}
+.searchWrapper input {
+  width: 90%;
+}

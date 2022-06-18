@@ -1,7 +1,9 @@
 import * as AuthActionCreators from './AuthActions'
-import * as ProfilectionCreators from './ProfileActions'
+import * as ProfileActionCreators from './ProfileActions'
+import * as UsersActionCreators from './UsersActions'
 
 export default {
   ...AuthActionCreators,
-  ...ProfilectionCreators
+  ...ProfileActionCreators,
+  ...UsersActionCreators
 }

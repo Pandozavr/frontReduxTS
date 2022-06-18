@@ -1,5 +1,4 @@
 .aside{
-    grid-area: aside;
     background-color: #6191cb;
     display: flex;
     flex-direction: column;
@@ -7,6 +6,10 @@
     font-weight: bold;
     font-family: Calibri;
     padding: 10px 15px;
+    position: fixed;
+    top: var(--header-height);
+    width: var(--aside-width);
+    height: 100vh;
 }
 
 .aside a{

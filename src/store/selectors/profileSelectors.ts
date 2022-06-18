@@ -11,7 +11,7 @@ export const getIsLoadingValue = (state: RootState) => {
 };
 
 export const getAvatar = (state: RootState) => {
-  if(state.profile.avatarUrl === "none"){
+  if(state.profile.avatarUrl === "http://localhost:3001/none"){
     return noAvatar
   } else {
     return state.profile.avatarUrl

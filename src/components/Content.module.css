@@ -1,5 +1,14 @@
 .content{
-    grid-area: content;
     padding: 15px;
     background-color: #F0F2F5;
+    margin-left: var(--aside-width);
+    margin-top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+}
+.contentNotAuth{
+    padding: 15px;
+    background-color: #F0F2F5;
+    margin-top: var(--header-height);
+    height: calc(100vh - var(--header-height));
 }

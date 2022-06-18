@@ -15,7 +15,7 @@ export interface SetIsAuthAction {
   payload: boolean
 }
 
-export interface SetIsLoading {
+export interface SetIsLoadingAuth {
   type: AuthActionsEnum.SET_ISLOADING
   payload: boolean
 }
@@ -25,4 +25,4 @@ export interface SetError {
   payload: string | null
 }
 
-export type AuthAction = SetIsAuthAction | SetIsLoading | SetError
+export type AuthAction = SetIsAuthAction | SetIsLoadingAuth | SetError
