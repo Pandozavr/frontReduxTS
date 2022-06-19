@@ -5,13 +5,14 @@ import { useActions } from '../../../hooks/useActions';
 import { btnVariant, Button } from '../../common/Button/Button';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getError, getIsAuthValue } from '../../../store/selectors/authSelectors';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Error } from "../../common/Error/Error";
 
 export const Login: FC = () => {
 
   const isAuth = useTypedSelector(getIsAuthValue)
   const error = useTypedSelector(getError)
+  const navigate = useNavigate()
 
   const {login} = useActions()
 
@@ -22,9 +23,15 @@ export const Login: FC = () => {
 
   const {register, handleSubmit, formState: { errors }} = useForm<Inputs>();
 
-  if (isAuth) {
-    return <Navigate to={'/profile'}/>
-}
+useEffect(()=>{
+  if(isAuth){
+    const loc = localStorage.getItem('lastLocation')
+    if(loc !== null){
+      navigate(loc)
+    }
+    navigate(-2)
+  }
+})
 
   const onSubmit: SubmitHandler<Inputs> = data => login(data.email, data.password)
 
