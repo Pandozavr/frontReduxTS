@@ -1,7 +1,7 @@
 .authForm{
   display: flex;
   flex-flow: column;
-  width: 50%;
+  width: 30%;
 }
 .authForm input{
   margin: 10px 0px;

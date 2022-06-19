@@ -10,7 +10,7 @@ export const Aside = () => {
   return (
     <>
       <div className={styles.aside}>
-       <div>
+       <div >
           <NavLink className={setActive} to='/profile'>My Profile</NavLink>
         </div>
         <div>

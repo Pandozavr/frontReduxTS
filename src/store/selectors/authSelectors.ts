@@ -1,4 +1,5 @@
 import { RootState } from '../store';
+
 export const getIsAuthValue = (state: RootState) => {
     return state.auth.isAuth
 };

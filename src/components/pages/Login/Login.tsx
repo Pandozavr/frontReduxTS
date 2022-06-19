@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./Login.module.css"
 import { useActions } from '../../../hooks/useActions';
 import { btnVariant, Button } from '../../common/Button/Button';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getError, getIsAuthValue } from '../../../store/selectors/authSelectors';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Error } from "../../common/Error/Error";
 
 export const Login: FC = () => {
@@ -22,12 +22,11 @@ export const Login: FC = () => {
 
   const {register, handleSubmit, formState: { errors }} = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = data => login(data.email, data.password)
-
-
   if (isAuth) {
-    return <Navigate to={"/profile"}/>
+    return <Navigate to={'/profile'}/>
 }
+
+  const onSubmit: SubmitHandler<Inputs> = data => login(data.email, data.password)
 
   return (
     <div className={styles.wrapperAuthForm}>

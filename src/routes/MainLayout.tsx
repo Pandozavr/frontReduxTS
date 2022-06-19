@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { getPreloadValue, getIsAuthValue } from '../store/selectors/authSelectors';
+import { Navigate } from 'react-router-dom';
 
 export const MainLayout = () => {
   
