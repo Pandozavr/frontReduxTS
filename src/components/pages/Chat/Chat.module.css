@@ -1,0 +1,22 @@
+.chatWrapper{
+ display: grid;
+ grid-template-areas:
+  "dialog user"
+  "enterText user"; 
+ grid-template-columns: 7fr 3fr;
+ grid-template-rows: 7fr 3fr;
+}
+.dialog, .enterText, .userList{
+  border: black 1px solid;
+  padding: 10px;
+}
+.dialog{
+  grid-area: dialog;
+}
+.enterText{
+  grid-area: enterText;
+  display: flex;
+}
+.userList{
+  grid-area: user;
+}

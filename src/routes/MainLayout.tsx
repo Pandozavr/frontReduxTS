@@ -26,9 +26,14 @@ export const MainLayout = () => {
     });
     localStorage.setItem("token", response.data.accessToken);
   };
-  
 
-  useEffect(() => {    
+  useEffect(() => {
+    if(location.pathname !== '/login'){
+      sessionStorage.setItem("lastLocation", location.pathname);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoadingAuth(true);
       checkAuth()
@@ -42,16 +47,6 @@ export const MainLayout = () => {
         .finally(() => setIsLoadingAuth(false));
     }
   }, []);
-
-  useEffect(()=>{
-    if(location.pathname !== "/login"){
-     console.log('horosh');
-     localStorage.setItem('lastLocation', location.pathname)
-    } else {
-      console.log("govno");
-      localStorage.setItem('lastLocation', '/profile')
-    }
-  }, [location.pathname])
 
   return (
     <div>

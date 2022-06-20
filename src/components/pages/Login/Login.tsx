@@ -24,14 +24,19 @@ export const Login: FC = () => {
   const {register, handleSubmit, formState: { errors }} = useForm<Inputs>();
 
 useEffect(()=>{
+  
   if(isAuth){
-    const loc = localStorage.getItem('lastLocation')
-    if(loc !== null){
+    const loc = sessionStorage.getItem('lastLocation')
+    if(loc === null){
+      navigate('/profile')
+    }if(loc !== null && loc === '/'){
+      navigate('/profile')
+    } if(loc !== null) {
       navigate(loc)
-    }
-    navigate(-2)
+    }    
   }
-})
+}, [])
+
 
   const onSubmit: SubmitHandler<Inputs> = data => login(data.email, data.password)
 

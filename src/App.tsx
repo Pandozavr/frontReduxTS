@@ -1,5 +1,5 @@
 import "./components/common/Input/Input.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Chat } from "./components/pages/Chat/Chat";
 import { Login } from "./components/pages/Login/Login";
 import { Music } from "./components/pages/Music/Music";
@@ -19,7 +19,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Navigate to='/login' />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
