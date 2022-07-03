@@ -1,0 +1,11 @@
+.userList{
+  grid-area: user;
+  background-color: rgb(224, 240, 254);
+}
+.userItem{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-bottom: 10px;
+}

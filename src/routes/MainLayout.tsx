@@ -20,6 +20,7 @@ export const MainLayout = () => {
   const isAuth = useTypedSelector(getIsAuthValue);
   const location = useLocation();
 
+  //функция с запросом на рефреш токенов
   const checkAuth = async () => {
     const response = await axios.get(`${API_URL}/refresh`, {
       withCredentials: true,
@@ -27,12 +28,14 @@ export const MainLayout = () => {
     localStorage.setItem("token", response.data.accessToken);
   };
 
+  //юзЕффект записывающий path в сешон сторедж, чтобы после рефреша страницы возвращаться в тоже место, где и был
   useEffect(() => {
-    if(location.pathname !== '/login'){
+    if(location.pathname !== '/login' && location.pathname !== '/register'){
       sessionStorage.setItem("lastLocation", location.pathname);
     }
   }, [location.pathname]);
 
+  //юзЕффект на проверку авторизован ли пользователь
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoadingAuth(true);

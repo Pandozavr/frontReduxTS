@@ -1,0 +1,7 @@
+.msgItemWrapper{
+  display: flex;
+  width: 100%;
+  background-color: white;
+  padding: 5px;
+  margin-bottom: 2px;
+}

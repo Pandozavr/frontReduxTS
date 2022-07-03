@@ -24,14 +24,13 @@ export const Login: FC = () => {
   const {register, handleSubmit, formState: { errors }} = useForm<Inputs>();
 
 useEffect(()=>{
-  
   if(isAuth){
-    const loc = sessionStorage.getItem('lastLocation')
+    let loc = sessionStorage.getItem('lastLocation')
     if(loc === null){
       navigate('/profile')
-    }if(loc !== null && loc === '/'){
+    }if(loc === '/'){
       navigate('/profile')
-    } if(loc !== null) {
+    } if(loc !== null && loc !== '/') {
       navigate(loc)
     }    
   }

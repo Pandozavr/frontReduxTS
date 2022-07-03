@@ -24,7 +24,8 @@ export const setErrorAuth = (payload: null|string): SetError => {
 export const login = (email: string, password: string) => async (dispatch: Dispatch<AuthAction>) => {
   try {
     dispatch(setIsLoadingAuth(true))
-    await authAPI.login(email, password)
+    const res = await authAPI.login(email, password)
+    localStorage.setItem("token", res.data.accessToken)
     dispatch(setIsAuthAction(true))
     dispatch(setIsLoadingAuth(false))
   } catch (e:any) {   

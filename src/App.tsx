@@ -13,7 +13,7 @@ import { useTypedSelector } from "./hooks/useTypedSelector";
 import { getIsAuthValue } from "./store/selectors/authSelectors";
 
 const App = () => {
-  const isAuth = useTypedSelector(getIsAuthValue);
+  const isAuth = useTypedSelector(getIsAuthValue); 
 
   return (
     <>

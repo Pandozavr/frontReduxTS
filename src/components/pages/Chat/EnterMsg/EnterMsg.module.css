@@ -1,0 +1,9 @@
+.enterText{
+  grid-area: enterText;
+  display: flex;
+  background-color: rgb(204, 230, 252);
+}
+.enterText > input{
+  width: 90%;
+  margin-right: 15px;
+}

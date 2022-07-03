@@ -1,0 +1,4 @@
+.dialog{
+  grid-area: dialog;
+  background-color: aliceblue;
+}
