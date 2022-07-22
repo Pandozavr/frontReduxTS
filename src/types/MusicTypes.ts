@@ -1,5 +1,5 @@
 export interface TrackItem{
-  id: number
+  track_id: number
   track_name: string
   artist: string
   file_name: string

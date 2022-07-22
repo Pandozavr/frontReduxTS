@@ -1,0 +1,22 @@
+.trackWrapper{
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 4fr 1fr 1fr;
+  align-items: center;
+}
+.trackWrapper img{
+  width: 30px;
+  cursor: pointer;
+}
+.progress{
+  height: 30px;
+  width: 400px;
+  background-color: rgba(203, 202, 202, 0.795);
+}
+.VolumeBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.VolumeBar *{
+  margin-left: 5px;
+}
