@@ -14,9 +14,9 @@ export const TrackTime: FC<TrackTimeType> = ({durTime, curTime}) => {
     let min = Math.trunc(dur / 60) //получаем к-во полных минут
     let sec = dur % 60 //получаем остаток секунд
     if(sec.toString().length === 1){
-      return "0" + min + " : " + "0" + sec;
+      return "0" + min + ":" + "0" + sec;
     } else {
-      return "0" + min + " : " + sec;
+      return "0" + min + ":" + sec;
     }
   } //Отображаем общее время трека воспроизведения в формате 00:00
   const time = normFormatTime(durTime)

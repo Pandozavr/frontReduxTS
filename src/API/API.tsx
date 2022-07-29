@@ -67,8 +67,8 @@ export const profileAPI = {
         const {data} = await instance.post(`post`, {textPost});
         return data;
     },
-    getProfileData() {
-        return instance.get<Profile>(`profile`);
+    async getProfileData() {
+        return await instance.get<Profile>(`profile`);
     },
     async getPosts() {
         const {data} = await instance.get<getPosts>(`userposts`);

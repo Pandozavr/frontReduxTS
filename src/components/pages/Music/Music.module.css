@@ -1,0 +1,20 @@
+.btnMenuTracks{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.btnMenuTracks > div{
+  padding: 5px;
+  background-color: azure;
+  width: 50%;
+  text-align: center;
+  border-bottom: 1px solid rgb(129, 142, 153);
+  cursor: pointer;
+}
+.btnMenuTracks > div:last-child{
+  border-left: 1px solid rgb(129, 142, 153);
+}
+.btnMenuTracks > div:hover{
+  background-color: rgb(96, 164, 164);
+}

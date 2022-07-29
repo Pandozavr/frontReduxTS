@@ -1,13 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useActions } from '../../../hooks/useActions';
-import { TrackItem } from './TrackItem';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { getAllTracks } from '../../../store/selectors/musicSelectors';
+import styles from './Music.module.css';
+import { AddTracks } from './AddTracks';
+import { AllTracks } from './AllTracks';
 
 export const Music = () => {
 
   const {getMusichunk} = useActions()
-  const music = useTypedSelector(getAllTracks)
+  
+  const [isAdd, setIsAdd] = useState(false)
+
+  const activeAddTab = () => {
+    setIsAdd(true)
+  }
+  const activeAllTrackTab = () => {
+    setIsAdd(false)
+  }
 
   useEffect(()=>{
     getMusichunk()
@@ -15,13 +23,11 @@ export const Music = () => {
 
   return (
     <div>
-       {music.map(track => <TrackItem
-                key={track.track_id}
-                artist={track.artist}
-                trackName={track.track_name}
-                fileName={track.file_name}
-            />)
-            }
+      <div className={styles.btnMenuTracks}>
+        <div onClick={activeAllTrackTab}>All Tracks</div>
+        <div onClick={activeAddTab}>Add Tracks</div>
+      </div>
+      {isAdd ? <AddTracks /> : <AllTracks />}
     </div>
   )
 }

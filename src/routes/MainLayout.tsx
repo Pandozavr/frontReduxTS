@@ -46,6 +46,7 @@ export const MainLayout = () => {
         })
         .catch((e) => {
           console.log("not authorized " + e);
+          setIsAuthAction(false);
         })
         .finally(() => setIsLoadingAuth(false));
     }
