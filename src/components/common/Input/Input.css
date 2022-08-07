@@ -5,3 +5,14 @@ input{
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
     display: block;
 }
+.inputFileUpl{
+    background-color: rgb(72, 72, 146);
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+}
+.inputFileUpl:hover{
+    background-color: rgb(94, 94, 204);
+}

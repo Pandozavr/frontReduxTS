@@ -1,0 +1,12 @@
+.wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.wrapper > form{
+  width: 40%;
+}
+.wrapper > form > *{
+  margin-bottom: 10px;
+  width: 100%;
+}

@@ -3,11 +3,11 @@ import {
   TrackItem,
   MusicAction,
   SetTracks,
-  SetErrorMusic,
 } from "../../types/MusicTypes";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
 import { musicAPI } from "../../API/API";
+import { SetMsgType, SetMsgText } from '../../types/MusicTypes';
 
 export const setTracks = (payload: Array<TrackItem>): SetTracks => {
   return {
@@ -16,13 +16,18 @@ export const setTracks = (payload: Array<TrackItem>): SetTracks => {
   };
 };
 
-export const setErrorMusic = (payload: string): SetErrorMusic => {
+export const setMsgType = (payload: string | null ): SetMsgType => {
   return {
-    type: MusicActionsEnum.SET_ERROR,
-    payload,
-  };
-};
-
+    type: MusicActionsEnum.SET_MSG_TYPE,
+    payload
+  }
+}
+export const setMsgText = (payload: string | null ): SetMsgText => {
+  return {
+    type: MusicActionsEnum.SET_MSG_TEXT,
+    payload
+  }
+}
 ////////////////////_THUNK
 
 type ThunkType = ThunkAction<Promise<void>, RootState, unknown, MusicAction>;
@@ -41,8 +46,19 @@ export const addTrack = (trackName:string, artist:string, track:string): ThunkTy
     let addTrack = await musicAPI.addTrack(trackName, artist, track)
     let res = await musicAPI.getMusic();
     dispatch(setTracks(res.data.data));
-    console.log(addTrack);
+    dispatch(setMsgType("success"))
+    dispatch(setMsgText("Track added success"))
+    setTimeout(() => {
+      dispatch(setMsgText(null))
+      dispatch(setMsgType(null))
+    }, 3000)
   } catch (e: any) {
     console.log(e);
+    dispatch(setMsgType("error"))
+    dispatch(setMsgText("Failed"))
+    setTimeout(() => {
+      dispatch(setMsgText(null))
+      dispatch(setMsgType(null))
+    }, 3000)
   }
 };

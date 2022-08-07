@@ -1,12 +1,17 @@
 import { FC } from "react"
-import styles from "./Error.module.css"
+import "./Error.css"
+
 
 interface errorType{
-  textError: string
+  msgText: string | null
+  msgType: string | null
 }
 
-export const Error: FC<errorType> = ({textError}) => {
+export const Error: FC<errorType> = ({msgText, msgType}) => {
+
+  const msgClasses = ['wrapper', msgType];
+
   return (
-    <div className={styles.wrapper}>{textError}</div>
+    <div className={msgClasses.join(' ')}>{msgText}</div>
   )
 }

@@ -3,10 +3,17 @@
   z-index: 100;
   width: 400px;
   min-height: 70px;
-  background-color: rgba(220, 20, 60, 0.599);
   color: white;
   text-align: center;
   border-radius: 10px;
   padding: 5px;
   bottom: 20px;
+  padding-top: 15px;
+}
+.error{
+  background-color: rgba(220, 20, 60, 0.599);
+}
+
+.success{
+  background-color: rgba(20, 220, 47, 0.599);
 }

@@ -42,7 +42,7 @@ export const Register = () => {
 
             <Button type={btnVariant.blue} name="Register" />
         </form>
-        {error && <Error textError={error} />}
+        {error && <Error msgText={error} msgType="error" />}
     </div>
   )
 }

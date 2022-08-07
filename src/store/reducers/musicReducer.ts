@@ -2,7 +2,8 @@ import { MusicState, MusicAction, MusicActionsEnum } from '../../types/MusicType
 
 const initialState: MusicState = {
   allTracks: [],
-  error: null
+  MsgType: null,
+  MsgText: null
 }
 
 export const musicReducer = (state = initialState, action: MusicAction): MusicState => {
@@ -10,8 +11,11 @@ export const musicReducer = (state = initialState, action: MusicAction): MusicSt
     case MusicActionsEnum.SET_TRACKS: {
       return {...state, allTracks: action.payload}
     }
-    case MusicActionsEnum.SET_ERROR: {
-      return {...state, error: action.payload}
+    case MusicActionsEnum.SET_MSG_TYPE: {
+      return {...state, MsgType: action.payload}
+    }
+    case MusicActionsEnum.SET_MSG_TEXT: {
+      return {...state, MsgText: action.payload}
     }
     default:
       return state

@@ -7,17 +7,23 @@ export interface TrackItem{
 
 export interface MusicState{
   allTracks: Array<TrackItem>
-  error: string | null
+  MsgType: string | null
+  MsgText: string | null
 }
 
 export enum MusicActionsEnum {
   SET_TRACKS = "SET_TRACKS",
-  SET_ERROR = "SET_ERROR",
+  SET_MSG_TYPE = "SET_MSG_TYPE",
+  SET_MSG_TEXT = "SET_MSG_TEXT"
 }
 
-export interface SetErrorMusic {
-  type: MusicActionsEnum.SET_ERROR
-  payload: string
+export interface SetMsgType {
+  type: MusicActionsEnum.SET_MSG_TYPE
+  payload: string | null
+}
+export interface SetMsgText {
+  type: MusicActionsEnum.SET_MSG_TEXT
+  payload: string | null
 }
 
 export interface SetTracks {
@@ -25,4 +31,4 @@ export interface SetTracks {
   payload: Array<TrackItem>
 }
 
-export type MusicAction = SetTracks | SetErrorMusic
+export type MusicAction = SetTracks | SetMsgType | SetMsgText

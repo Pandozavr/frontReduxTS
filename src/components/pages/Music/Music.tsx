@@ -1,33 +1,26 @@
-import { useEffect, useState } from 'react';
-import { useActions } from '../../../hooks/useActions';
-import styles from './Music.module.css';
-import { AddTracks } from './AddTracks';
-import { AllTracks } from './AllTracks';
+import { useEffect } from "react";
+import { useActions } from "../../../hooks/useActions";
+import styles from "./Music.module.css";
+import { Outlet, NavLink } from "react-router-dom";
 
 export const Music = () => {
+  const { getMusichunk } = useActions();
 
-  const {getMusichunk} = useActions()
-  
-  const [isAdd, setIsAdd] = useState(false)
-
-  const activeAddTab = () => {
-    setIsAdd(true)
-  }
-  const activeAllTrackTab = () => {
-    setIsAdd(false)
-  }
-
-  useEffect(()=>{
-    getMusichunk()
-  }, [])
+  useEffect(() => {
+    getMusichunk();
+  }, []);
 
   return (
     <div>
       <div className={styles.btnMenuTracks}>
-        <div onClick={activeAllTrackTab}>All Tracks</div>
-        <div onClick={activeAddTab}>Add Tracks</div>
+        <div>
+          <NavLink to="all-tracks">All Tracks</NavLink>
+        </div>
+        <div>
+          <NavLink to="add-tracks">Add Track</NavLink>
+        </div>
       </div>
-      {isAdd ? <AddTracks /> : <AllTracks />}
+      <Outlet />
     </div>
-  )
-}
+  );
+};

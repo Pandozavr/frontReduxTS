@@ -11,6 +11,8 @@ import { NotFound } from "./components/pages/Error/NotFound";
 import { AuthRequire } from "./routes/AuthRequire";
 import { useTypedSelector } from "./hooks/useTypedSelector";
 import { getIsAuthValue } from "./store/selectors/authSelectors";
+import { AllTracks } from "./components/pages/Music/AllTracks";
+import { AddTracks } from './components/pages/Music/AddTracks';
 
 const App = () => {
   const isAuth = useTypedSelector(getIsAuthValue); 
@@ -20,15 +22,18 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Navigate to='/login' />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
 
           <Route element={<AuthRequire isAuth={isAuth} />}>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/music" element={<Music />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="users" element={<Users />} />
+            <Route path="chat" element={<Chat />} />
+            <Route path="music" element={<Music />} >
+              <Route path="all-tracks" element={<AllTracks/>} />
+              <Route path="add-tracks" element={<AddTracks/>} />
+            </Route>
           </Route>
         </Route>
       </Routes>

@@ -71,7 +71,7 @@ export const Login: FC = () => {
 
         <Button type={btnVariant.blue} name="Login" />
       </form>
-      {error && <Error textError={error} />}
+      {error && <Error msgText={error} msgType="error" />}
     </div>
   );
 };
