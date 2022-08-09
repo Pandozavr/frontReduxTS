@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from 'react';
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { btnVariant, Button } from "./common/Button/Button";
 import styles from "./Header.module.css";
@@ -6,7 +6,7 @@ import { getIsAuthValue } from "../store/selectors/authSelectors";
 import { NavLink } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
   const isAuth = useTypedSelector(getIsAuthValue);
   const {logout} = useActions()
 
@@ -26,4 +26,4 @@ export const Header: FC = () => {
       }
     </div>
   );
-};
+});

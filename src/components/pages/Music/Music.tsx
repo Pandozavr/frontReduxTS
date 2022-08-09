@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useActions } from "../../../hooks/useActions";
-import styles from "./Music.module.css";
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { TwoTabRoute } from "../../common/TwoTabRoute/TwoTabRoute";
 
 export const Music = () => {
   const { getMusichunk } = useActions();
@@ -12,14 +12,7 @@ export const Music = () => {
 
   return (
     <div>
-      <div className={styles.btnMenuTracks}>
-        <div>
-          <NavLink to="all-tracks">All Tracks</NavLink>
-        </div>
-        <div>
-          <NavLink to="add-tracks">Add Track</NavLink>
-        </div>
-      </div>
+      <TwoTabRoute name_1="All Tracks" name_2="Add Track" pathTo_1="all-tracks" pathTo_2="add-tracks" />
       <Outlet />
     </div>
   );

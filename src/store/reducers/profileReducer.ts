@@ -2,6 +2,7 @@ import { ProfileState, ProfileActionsEnum, ProfileAction } from '../../types/Pro
 
 
 const initialState: ProfileState = {
+    userID: null,
     avatarUrl: "",
     userName: "",
     posts: [],
@@ -15,7 +16,7 @@ export const profileReducer = (state = initialState, action: ProfileAction): Pro
             return {...state, posts: action.payload}
         }
         case ProfileActionsEnum.SET_PROFILE: {
-            return {...state, avatarUrl: action.payload.avaUrl, userName: action.payload.userName}
+            return {...state, avatarUrl: action.payload.avaUrl, userName: action.payload.userName, userID: action.payload.userID}
         }
         case ProfileActionsEnum.SET_ERROR: {
             return {...state, error: action.payload}

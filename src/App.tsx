@@ -13,8 +13,11 @@ import { useTypedSelector } from "./hooks/useTypedSelector";
 import { getIsAuthValue } from "./store/selectors/authSelectors";
 import { AllTracks } from "./components/pages/Music/AllTracks";
 import { AddTracks } from './components/pages/Music/AddTracks';
+import { AllUsers } from "./components/pages/Users/AllUsers";
+import { MyFriends } from "./components/pages/Users/MyFriends";
+import { memo } from 'react';
 
-const App = () => {
+const App = memo(() => {
   const isAuth = useTypedSelector(getIsAuthValue); 
 
   return (
@@ -28,9 +31,14 @@ const App = () => {
 
           <Route element={<AuthRequire isAuth={isAuth} />}>
             <Route path="profile" element={<Profile />} />
-            <Route path="users" element={<Users />} />
+            <Route path="users" element={<Users />} >
+              <Route path="" element={<Navigate to='/users/all-users' />} />
+              <Route path="all-users" element={<AllUsers />} />
+              <Route path="my-friends" element={<MyFriends />} />
+            </ Route>
             <Route path="chat" element={<Chat />} />
             <Route path="music" element={<Music />} >
+              <Route path="" element={<Navigate to='/music/all-tracks' />} />
               <Route path="all-tracks" element={<AllTracks/>} />
               <Route path="add-tracks" element={<AddTracks/>} />
             </Route>
@@ -39,6 +47,6 @@ const App = () => {
       </Routes>
     </>
   );
-};
+});
 
 export default App;

@@ -2,7 +2,8 @@ import { UsersActionsEnum, UsersState } from "../../types/UsersTypes";
 
 const initialState: UsersState = {
   users: [],
-  error: null
+  error: null,
+  userInfo: null
 }
 
 export const usersReducer = (state = initialState, action: any): UsersState => {
@@ -12,6 +13,9 @@ export const usersReducer = (state = initialState, action: any): UsersState => {
     }
     case UsersActionsEnum.SET_ERROR: {
       return {...state, error: action.payload}
+    }
+    case UsersActionsEnum.SET_USER_INFO: {
+      return {...state, userInfo: action.payload}
     }
     default:
       return state;

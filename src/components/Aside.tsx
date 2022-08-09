@@ -20,7 +20,7 @@ export const Aside = () => {
           <NavLink className={setActive} to='/chat'>Chat</NavLink>
         </div>
         <div>
-          <NavLink className={setActive} to='/music/all-tracks'>Music</NavLink>
+          <NavLink className={setActive} to='/music'>Music</NavLink>
         </div>
       </div>
     </>

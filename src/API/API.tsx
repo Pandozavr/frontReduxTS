@@ -1,13 +1,13 @@
 import axios from "axios"
 import {Navigate} from "react-router-dom";
-import { authLogin, uplAvatar, Profile, getPosts, getUsers, getMusic } from './apiTypes';
+import { authLogin, uplAvatar, Profile, getPosts, getUsers, getMusic, getUserViewData } from './apiTypes';
 
 export const API_URL = `http://localhost:3001/api`;
 export const FILE_URL = `http://localhost:3001/`;
 
 const instance = axios.create({
     baseURL: API_URL,
-    withCredentials: true, //автоматическая подцепка куки к запросу
+    withCredentials: true, 
     responseType: "json",
     headers: {
         "content-type": "application/json",
@@ -88,6 +88,11 @@ export const userAPI = {
     async getUsers() {
         const {data} = await instance.get<getUsers>(`users`);
         return data;
+    },
+    async getUserViewData(userID:number) {
+        const {data} = await instance.get<getUserViewData>(`user?userId=${userID}`)
+        console.log(data);
+        return data
     },
     follow(friendId:number) {
         return instance.get(`follow?friendId=${friendId}`)

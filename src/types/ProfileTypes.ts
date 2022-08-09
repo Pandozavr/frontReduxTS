@@ -4,6 +4,7 @@ export interface posts {
 }
 
 export interface ProfileState {
+  userID: number | null
   userName: string
   avatarUrl: string
   posts: Array<posts>
@@ -24,6 +25,7 @@ export interface SetPostsType {
 }
 
 export interface profilePayload{
+  userID: number
   userName: string
   email: string
   avaUrl: string

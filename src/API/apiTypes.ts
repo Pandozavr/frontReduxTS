@@ -1,3 +1,4 @@
+import { posts } from '../types/ProfileTypes';
 interface userObjAuth {
   id: number,
   email: string
@@ -14,6 +15,7 @@ export interface uplAvatar {
 }
 
 export interface Profile {
+  userID: number
   userName: string,
   email: string,
   avaUrl: string
@@ -38,6 +40,11 @@ interface user {
 
 export interface getUsers {
   allUsers: Array<user>
+}
+export interface getUserViewData{
+  posts: Array<posts>
+  user_name: string
+  avaUrl: string
 }
 
 interface TrackData {

@@ -4,9 +4,12 @@ import { useActions } from "../../../hooks/useActions";
 import "../../common/Input/Input.css";
 import styles from "./AddTracks.module.css";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { getAddTrackMsgType, getAddTrackMsgText } from '../../../store/selectors/musicSelectors';
+import {
+  getAddTrackMsgType,
+  getAddTrackMsgText,
+} from "../../../store/selectors/musicSelectors";
 import { Error } from "../../common/Error/Error";
-import { BaseSyntheticEvent, useState } from 'react';
+import { BaseSyntheticEvent, useState } from "react";
 
 type Inputs = {
   trackName: string;
@@ -18,21 +21,19 @@ export const AddTracks = () => {
   const { addTrack } = useActions();
   const {
     register,
-    handleSubmit,
-    formState: { errors },
+    handleSubmit
   } = useForm<Inputs>();
-  const msgType = useTypedSelector(getAddTrackMsgType)
-  const msgText = useTypedSelector(getAddTrackMsgText)
-  const [fileName, setFileName] = useState("")
+  const msgType = useTypedSelector(getAddTrackMsgType);
+  const msgText = useTypedSelector(getAddTrackMsgText);
+  const [fileName, setFileName] = useState("");
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     addTrack(data.trackName, data.artist, data.track[0]);
   };
 
-  const handleChange = (e:BaseSyntheticEvent) => {
-    console.log(e.target.files[0].name)
-    setFileName(e.target.files[0].name)
-  }
+  const handleChange = (e: BaseSyntheticEvent) => {
+    setFileName(e.target.files[0].name);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -40,10 +41,14 @@ export const AddTracks = () => {
         <input
           type="text"
           placeholder="Track Name"
-          {...register("trackName")}
+          {...(register("trackName"), { required: true })}
         />
 
-        <input type="text" placeholder="Artist" {...register("artist")} />
+        <input
+          type="text"
+          placeholder="Artist"
+          {...(register("artist"), { required: true })}
+        />
 
         <label onChange={handleChange} className="inputFileUpl">
           {`Select Track: ${fileName}`}
