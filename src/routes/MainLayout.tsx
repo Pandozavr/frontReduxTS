@@ -40,7 +40,7 @@ export const MainLayout = () => {
     if (localStorage.getItem("token")) {
       setIsLoadingAuth(true);
       checkAuth()
-        .then((data) => {
+        .then(() => {
           setIsAuthAction(true);
           setIsLoadingAuth(false);
         })

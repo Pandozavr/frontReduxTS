@@ -3,7 +3,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { btnVariant, Button } from "./common/Button/Button";
 import styles from "./Header.module.css";
 import { getIsAuthValue } from "../store/selectors/authSelectors";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 
 export const Header: FC = memo(() => {
@@ -14,12 +14,12 @@ export const Header: FC = memo(() => {
     <div className={styles.header}>
       {!isAuth ? 
         <>
-          <NavLink to="/login">
+          <Link to="/login">
             <Button name="Login" type={btnVariant.blue} />
-          </NavLink>
-          <NavLink to="/register">
+          </Link>
+          <Link to="/register">
             <Button name="Register" type={btnVariant.blue} />
-          </NavLink>
+          </Link>
         </>
        : 
         <Button click={logout} name="Logout" type={btnVariant.red} />

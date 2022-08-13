@@ -28,8 +28,8 @@ export const setMsgText = (payload: string | null ): SetMsgText => {
     payload
   }
 }
-////////////////////_THUNK
 
+////////////////////_THUNK
 type ThunkType = ThunkAction<Promise<void>, RootState, unknown, MusicAction>;
 
 export const getMusichunk = (): ThunkType => async (dispatch) => {
@@ -43,7 +43,7 @@ export const getMusichunk = (): ThunkType => async (dispatch) => {
 
 export const addTrack = (trackName:string, artist:string, track:string): ThunkType => async (dispatch) => {
   try {
-    let addTrack = await musicAPI.addTrack(trackName, artist, track)
+    await musicAPI.addTrack(trackName, artist, track)
     let res = await musicAPI.getMusic();
     dispatch(setTracks(res.data.data));
     dispatch(setMsgType("success"))

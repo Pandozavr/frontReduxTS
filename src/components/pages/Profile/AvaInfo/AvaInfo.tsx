@@ -16,7 +16,6 @@ export const AvaInfo = () => {
       updAvatarThunk(e.target.files[0])
   }
 }
-
   useEffect(()=>{
     getProfileThunk()
   })
@@ -31,6 +30,7 @@ export const AvaInfo = () => {
           <input
             onChange={getFile}
             style={{ display: "none" }}
+            accept="image/jpeg,image/png"
             name="file"
             type="file"
           />

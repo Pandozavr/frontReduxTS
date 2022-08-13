@@ -3,7 +3,6 @@ import styles from "./UserItem.module.css"
 import { FILE_URL } from '../../../API/API';
 import { btnSize, btnVariant, Button } from "../../common/Button/Button";
 import { useActions } from '../../../hooks/useActions';
-//@ts-ignore
 import noAvatar from "../../../assets/images/no-avatar.png"
 
 interface usersProps{

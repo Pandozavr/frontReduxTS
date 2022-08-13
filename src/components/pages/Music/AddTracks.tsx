@@ -55,6 +55,7 @@ export const AddTracks = () => {
           <input
             style={{ display: "none" }}
             type="file"
+            accept="audio/mp3"
             {...register("track")}
           />
         </label>

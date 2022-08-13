@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useActions } from '../../../hooks/useActions';
+import { useMemo, useState } from 'react';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getUsersData } from '../../../store/selectors/usersSelectors';
 import { UserItem } from './UserItem';
@@ -8,10 +7,6 @@ import styles from "./Users.module.css";
 export const AllUsers = () => {
 
   const [searchValue, setSearchValue] = useState("");
-  const { getUsersThunk } = useActions();
-  useEffect(() => {
-    getUsersThunk();
-  }, []);
   const usersData = useTypedSelector(getUsersData);
   const searchedUsers = useMemo(() => {
     if (searchValue === "") {

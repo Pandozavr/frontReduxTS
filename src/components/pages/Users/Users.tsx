@@ -5,12 +5,14 @@ import { useEffect } from 'react';
 
 export const Users = () => {
 
-  const {getUserInfoThunk} = useActions()
-  useEffect(()=>{getUserInfoThunk(16)}, [])
+  const { getUsersThunk } = useActions();
+  useEffect(() => {
+    getUsersThunk();
+  }, []);
 
   return (
     <div>
-      <TwoTabRoute name_2='My Friends' name_1='All Users' pathTo_2='my-friends' pathTo_1='all-users' />
+      <TwoTabRoute name_1='All Users' name_2='My Friends' pathTo_1='all-users' pathTo_2='my-friends' />
       <Outlet />
     </div>
   );

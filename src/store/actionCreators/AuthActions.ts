@@ -21,6 +21,7 @@ export const setErrorAuth = (payload: null|string): SetError => {
     }
 }
 
+////////////////////_THUNK
 export const login = (email: string, password: string) => async (dispatch: Dispatch<AuthAction>) => {
   try {
     dispatch(setIsLoadingAuth(true))

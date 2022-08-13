@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { getUserName } from "../../../store/selectors/profileSelectors";
 import styles from "./Chat.module.css";
@@ -12,13 +13,15 @@ export const Chat = () => {
   const [msgArr, setMsgArr] = useState([]);
   const [userArrState, setUserArr] = useState([]);
   const [connected, setConnected] = useState(false);
-  const userName = useTypedSelector(getUserName);
+  const {getProfileThunk} = useActions()
 //коннектимся
   useEffect(() => {
+    getProfileThunk()
     if (!connected) {
       connect();
     }
-  });
+  },[]);
+  const userName = useTypedSelector(getUserName);
 //закрываем коннект при анмаунте компонента
   useEffect(()=>{
     return () => {
@@ -27,8 +30,8 @@ export const Chat = () => {
   },[])
 
   function connect() {
-    socket.current = new WebSocket("ws://localhost:5000");
-    // socket.current = new WebSocket("ws://62.113.99.202:5000");
+    //socket.current = new WebSocket("ws://localhost:5000");
+    socket.current = new WebSocket("ws://45.147.178.191:5000");
     socket.current.onopen = () => {
       console.log("socket connected");
       setConnected(true);

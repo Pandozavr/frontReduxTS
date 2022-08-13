@@ -2,8 +2,8 @@ import axios from "axios"
 import {Navigate} from "react-router-dom";
 import { authLogin, uplAvatar, Profile, getPosts, getUsers, getMusic, getUserViewData } from './apiTypes';
 
-export const API_URL = `http://localhost:3001/api`;
-export const FILE_URL = `http://localhost:3001/`;
+export const API_URL = `http://45.147.178.191:3001/api`;
+export const FILE_URL = `http://45.147.178.191:3001/`;
 
 const instance = axios.create({
     baseURL: API_URL,
@@ -15,14 +15,16 @@ const instance = axios.create({
     }
 });
 
+//Следующие два интерцептора нужны для работы авторизации на основе JWT
+
 //цепляем к запросу аксесс токен
 instance.interceptors.request.use((config:any) => {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
     return config;
 });
 
-
-// в случае получение в ответе 401 перехыватываем ответ и кидаем запрос на обновление пары токенов по рефреш токену, если его нету или он умер - редайрект
+// в случае получение в ответе 401 перехыватываем ответ и кидаем запрос на обновление пары токенов по рефреш токену, 
+// если его нету или он умер - редайрект
 // если ок, то сохраняем новый аксесс токен запихиваем его в локал сторедж и уже с новым акссес токеном повторно кидаем исходный запрос
 instance.interceptors.response.use((config:any) => {
     return config;
