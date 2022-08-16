@@ -2,8 +2,8 @@ import axios from "axios"
 import {Navigate} from "react-router-dom";
 import { authLogin, uplAvatar, Profile, getPosts, getUsers, getMusic, getUserViewData } from './apiTypes';
 
-export const API_URL = `http://45.147.178.191:3001/api`;
-export const FILE_URL = `http://45.147.178.191:3001/`;
+export const API_URL = `http://localhost:3001/api`;
+export const FILE_URL = `http://localhost:3001/`;
 
 const instance = axios.create({
     baseURL: API_URL,

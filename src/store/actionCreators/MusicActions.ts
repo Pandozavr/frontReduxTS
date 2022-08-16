@@ -7,7 +7,7 @@ import {
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
 import { musicAPI } from "../../API/API";
-import { SetMsgType, SetMsgText } from '../../types/MusicTypes';
+import { SetMsgType, SetMsgText, SetIsLoad } from '../../types/MusicTypes';
 
 export const setTracks = (payload: Array<TrackItem>): SetTracks => {
   return {
@@ -28,6 +28,12 @@ export const setMsgText = (payload: string | null ): SetMsgText => {
     payload
   }
 }
+export const setIsLoadTrack = (payload: boolean ): SetIsLoad => {
+  return {
+    type: MusicActionsEnum.SET_IS_LOAD,
+    payload
+  }
+}
 
 ////////////////////_THUNK
 type ThunkType = ThunkAction<Promise<void>, RootState, unknown, MusicAction>;
@@ -43,8 +49,10 @@ export const getMusichunk = (): ThunkType => async (dispatch) => {
 
 export const addTrack = (trackName:string, artist:string, track:string): ThunkType => async (dispatch) => {
   try {
+    dispatch(setIsLoadTrack(true))
     await musicAPI.addTrack(trackName, artist, track)
     let res = await musicAPI.getMusic();
+    dispatch(setIsLoadTrack(false))
     dispatch(setTracks(res.data.data));
     dispatch(setMsgType("success"))
     dispatch(setMsgText("Track added success"))

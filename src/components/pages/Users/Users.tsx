@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 export const Users = () => {
 
   const { getUsersThunk } = useActions();
+  const { getProfileThunk } = useActions();
   useEffect(() => {
+    getProfileThunk();
     getUsersThunk();
   }, []);
 

@@ -10,6 +10,8 @@ import {
 } from "../../../store/selectors/musicSelectors";
 import { Error } from "../../common/Error/Error";
 import { BaseSyntheticEvent, useState } from "react";
+import { Loader } from "../../common/Loader/Loader";
+import { getIsLoadTrackValue } from "../../../store/selectors/musicSelectors";
 
 type Inputs = {
   trackName: string;
@@ -19,16 +21,15 @@ type Inputs = {
 
 export const AddTracks = () => {
   const { addTrack } = useActions();
-  const {
-    register,
-    handleSubmit
-  } = useForm<Inputs>();
+  const { register, handleSubmit, reset } = useForm<Inputs>();
   const msgType = useTypedSelector(getAddTrackMsgType);
   const msgText = useTypedSelector(getAddTrackMsgText);
   const [fileName, setFileName] = useState("");
+  const isLoad = useTypedSelector(getIsLoadTrackValue);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     addTrack(data.trackName, data.artist, data.track[0]);
+    reset();
   };
 
   const handleChange = (e: BaseSyntheticEvent) => {
@@ -37,32 +38,35 @@ export const AddTracks = () => {
 
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          placeholder="Track Name"
-          {...(register("trackName"), { required: true })}
-        />
-
-        <input
-          type="text"
-          placeholder="Artist"
-          {...(register("artist"), { required: true })}
-        />
-
-        <label onChange={handleChange} className="inputFileUpl">
-          {`Select Track: ${fileName}`}
+      {isLoad ? (
+        <Loader />
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
           <input
-            style={{ display: "none" }}
-            type="file"
-            accept="audio/mp3"
-            {...register("track")}
+            type="text"
+            placeholder="Track Name"
+            {...register("trackName", { required: true })}
           />
-        </label>
 
-        <Button type={btnVariant.blue} name="ADD TRACK" />
-      </form>
+          <input
+            type="text"
+            placeholder="Artist"
+            {...register("artist", { required: true })}
+          />
 
+          <label onChange={handleChange} className="inputFileUpl">
+            {`Select Track: ${fileName}`}
+            <input
+              style={{ display: "none" }}
+              type="file"
+              accept="audio/mp3"
+              {...register("track")}
+            />
+          </label>
+
+          <Button type={btnVariant.blue} name="ADD TRACK" />
+        </form>
+      )}
       {msgText && <Error msgText={msgText} msgType={msgType} />}
     </div>
   );

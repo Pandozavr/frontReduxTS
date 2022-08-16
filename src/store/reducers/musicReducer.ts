@@ -3,7 +3,8 @@ import { MusicState, MusicAction, MusicActionsEnum } from '../../types/MusicType
 const initialState: MusicState = {
   allTracks: [],
   MsgType: null,
-  MsgText: null
+  MsgText: null,
+  isLoadTrack: false
 }
 
 export const musicReducer = (state = initialState, action: MusicAction): MusicState => {
@@ -16,6 +17,9 @@ export const musicReducer = (state = initialState, action: MusicAction): MusicSt
     }
     case MusicActionsEnum.SET_MSG_TEXT: {
       return {...state, MsgText: action.payload}
+    }
+    case MusicActionsEnum.SET_IS_LOAD: {
+      return {...state, isLoadTrack: action.payload}
     }
     default:
       return state

@@ -9,3 +9,6 @@ export const getAddTrackMsgType = (state: RootState) => {
 export const getAddTrackMsgText = (state: RootState) => {
     return state.music.MsgText
 };
+export const getIsLoadTrackValue = (state: RootState) => {
+    return state.music.isLoadTrack
+};
